@@ -12,13 +12,6 @@ var mouse = {
 
 var maxRadius = 30;
 
-var colorArray = [
-    'red',
-    'blue',
-    'green',
-    'yellow',
-];
-
 window.addEventListener('mousemove', function(event) {
     mouse.x = event.x;
     mouse.y = event.y;
@@ -70,9 +63,10 @@ function Circle(x, y, dx, dy, radius) {
         this.x += this.dx;
         this.y += this.dy;
 
-var magnet = 150; // Magnet effect
-var magnetSpeed = 0.1; // if negative it will repel instead of attract.
-var velocity = 0.98;
+        // Magnet effect
+    var magnet = document.getElementById('magnetInput').value;
+    var velocity = document.getElementById('velocityInput').value;
+    var speed = document.getElementById('speedInput').value;
 
         if (mouse.x - this.x < magnet 
             && mouse.x - this.x > -magnet
@@ -80,8 +74,8 @@ var velocity = 0.98;
             && mouse.y - this.y > -magnet) {
                 // Move the circle towards the mouse cursor
                 var angle = Math.atan2(mouse.y - this.y, mouse.x - this.x);
-                this.dx += Math.cos(angle) * magnetSpeed;
-                this.dy += Math.sin(angle) * magnetSpeed;
+                this.dx += Math.cos(angle) * speed;
+                this.dy += Math.sin(angle) * speed;
         } else {
             // Gradually reduce the velocity added by the magnet effect
             this.dx *= velocity;
