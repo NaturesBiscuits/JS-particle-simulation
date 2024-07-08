@@ -66,7 +66,7 @@ function Circle(x, y, dx, dy, radius) {
         // Magnet effect
     var magnet = document.getElementById('magnetInput').value;
     var velocity = document.getElementById('velocityInput').value;
-    var speed = document.getElementById('speedInput').value;
+    var power = document.getElementById('powerInput').value;
 
         if (mouse.x - this.x < magnet 
             && mouse.x - this.x > -magnet
@@ -74,8 +74,8 @@ function Circle(x, y, dx, dy, radius) {
             && mouse.y - this.y > -magnet) {
                 // Move the circle towards the mouse cursor
                 var angle = Math.atan2(mouse.y - this.y, mouse.x - this.x);
-                this.dx += Math.cos(angle) * speed;
-                this.dy += Math.sin(angle) * speed;
+                this.dx += Math.cos(angle) * power;
+                this.dy += Math.sin(angle) * power;
         } else {
             // Gradually reduce the velocity added by the magnet effect
             this.dx *= velocity;
